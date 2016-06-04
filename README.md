@@ -9,6 +9,31 @@
 npm install screwdriver-datastore-base
 ```
 
+## Extending
+*subject to change*
+```js
+class MyDatastore extends Datastore {
+    // Implement the interface
+    get(config, callback) {
+
+        // do something to fetch data...
+
+        if (config.params.id > 0) {
+            return callback(null, { id: config.params.id });
+        }
+
+        return process.nextTick(() => {
+            callback(new Error('invalid id'));
+        });
+    }
+}
+
+const store = new MyDatastore({});
+store.get({ params: { id: 1 } }, (err, data) => {
+    // do something....
+});
+```
+
 ## Testing
 
 ```bash
