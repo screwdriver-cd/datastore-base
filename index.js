@@ -37,16 +37,31 @@ class Datastore {
     }
 
     /**
-     * Save or create a record in the datastore
+     * Create a record in the datastore
      * @method save
      * @param  {Object}   config                Configuration
      * @param  {String}   config.table          table name
      * @param  {Object}   config.params         record data
-     * @param  {Object}   [config.params.id]    Unique id
+     * @param  {String}   config.params.id      Unique id
      * @param  {Function} callback
      */
     save() {
         console.error('save is not implemented');
+        throw new Error('not implemented');
+    }
+
+    /**
+     * Update a record in the datastore.
+     * Requires record to already exists
+     * @method save
+     * @param  {Object}   config                Configuration
+     * @param  {String}   config.table          table name
+     * @param  {Object}   config.params         record data
+     * @param  {String}   config.params.id      Unique id
+     * @param  {Function} callback
+     */
+    update() {
+        console.error('update is not implemented');
         throw new Error('not implemented');
     }
 
