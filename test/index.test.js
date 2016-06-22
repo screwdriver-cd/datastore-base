@@ -22,6 +22,7 @@ describe('index test', () => {
         assert.throws(instance.save, Error, 'not implemented');
         assert.throws(instance.scan, Error, 'not implemented');
         assert.throws(instance.remove, Error, 'not implemented');
+        assert.throws(instance.update, Error, 'not implemented');
     });
 
     it('can be extended', (done) => {
