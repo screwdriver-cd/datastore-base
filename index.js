@@ -1,5 +1,8 @@
 'use strict';
-/* eslint-disable no-console */
+/* eslint-disable no-underscore-dangle */
+const Joi = require('joi');
+const schema = require('screwdriver-data-schema');
+const datastoreSchema = schema.plugins.datastore;
 
 class Datastore {
     /**
@@ -28,12 +31,21 @@ class Datastore {
      * @param  {Object}   config            Configuration
      * @param  {String}   config.table      Table name
      * @param  {Object}   config.params     Query params
-     * @param  {Object}   config.params.id  Unique id
+     * @param  {String}   config.params.id  Unique id
      * @param  {Function} callback          fn(err, data)
      */
-    get() {
-        console.error('get is not implemented');
-        throw new Error('not implemented');
+    get(config, callback) {
+        const result = Joi.validate(config, datastoreSchema.get);
+
+        if (result.error) {
+            return callback(result.error);
+        }
+
+        return this._get(config, callback);
+    }
+
+    _get(config, callback) {
+        callback(new Error('not implemented'));
     }
 
     /**
@@ -46,9 +58,18 @@ class Datastore {
      * @param  {Object}   config.params.data    The data to save
      * @param  {Function} callback              fn(err, data)
      */
-    save() {
-        console.error('save is not implemented');
-        throw new Error('not implemented');
+    save(config, callback) {
+        const result = Joi.validate(config, datastoreSchema.save);
+
+        if (result.error) {
+            return callback(result.error);
+        }
+
+        return this._save(config, callback);
+    }
+
+    _save(config, callback) {
+        callback(new Error('not implemented'));
     }
 
     /**
@@ -58,13 +79,22 @@ class Datastore {
      * @param  {Object}   config                Configuration
      * @param  {String}   config.table          Table name
      * @param  {Object}   config.params         Record data
-     * @param  {Object}   config.params.data    The data to save
      * @param  {String}   config.params.id      Unique id
+     * @param  {Object}   config.params.data    The data to save
      * @param  {Function} callback              fn(err, data)
      */
-    update() {
-        console.error('update is not implemented');
-        throw new Error('not implemented');
+    update(config, callback) {
+        const result = Joi.validate(config, datastoreSchema.update);
+
+        if (result.error) {
+            return callback(result.error);
+        }
+
+        return this._update(config, callback);
+    }
+
+    _update(config, callback) {
+        callback(new Error('not implemented'));
     }
 
     /**
@@ -78,9 +108,18 @@ class Datastore {
      * @param  {Number}   config.paginate.page  Specific page of the set to return
      * @param  {Function} callback              fn(err, data)
      */
-    scan() {
-        console.error('scan is not implemented');
-        throw new Error('not implemented');
+    scan(config, callback) {
+        const result = Joi.validate(config, datastoreSchema.scan);
+
+        if (result.error) {
+            return callback(result.error);
+        }
+
+        return this._scan(config, callback);
+    }
+
+    _scan(config, callback) {
+        callback(new Error('not implemented'));
     }
 
     /**
@@ -92,9 +131,18 @@ class Datastore {
      * @param  {Object}   config.params.id  Unique id
      * @param  {Function} callback
      */
-    remove() {
-        console.error('remove is not implemented');
-        throw new Error('not implemented');
+    remove(config, callback) {
+        const result = Joi.validate(config, datastoreSchema.remove);
+
+        if (result.error) {
+            return callback(result.error);
+        }
+
+        return this._remove(config, callback);
+    }
+
+    _remove(config, callback) {
+        callback(new Error('not implemented'));
     }
 }
 
