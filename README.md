@@ -3,6 +3,10 @@
 
 > Base class defining the interface for datastore implementations
 
+This base class should be used for defining different datastore options for the screwdriver api.
+The functions exposed contain input validation for to define the contract for datastores so that it
+is agnostic of the actual implementation.
+
 ## Usage
 
 ```bash
@@ -10,11 +14,10 @@ npm install screwdriver-datastore-base
 ```
 
 ## Extending
-*subject to change*
 ```js
 class MyDatastore extends Datastore {
     // Implement the interface
-    get(config, callback) {
+    _get(config, callback) {
 
         // do something to fetch data...
 
@@ -29,11 +32,29 @@ class MyDatastore extends Datastore {
 }
 
 const store = new MyDatastore({});
-store.get({ params: { id: 1 } }, (err, data) => {
+store.get({ table: 'tablename', params: { id: 1 } }, (err, data) => {
     // do something....
 });
 ```
-## Expected inputs and outputs for datastore implementations
+
+The base class exposes a set of functions:
+* `get`
+* `save`
+* `update`
+* `scan`
+* `remove`
+
+All of those functions provide input validation on the config object being passed in,
+and call an underlying function with the arguments passed in.
+
+To take advantage of the input validation, override these functions:
+* `_get`
+* `_save`
+* `_update`
+* `_scan`
+* `_remove`
+
+## Validation
 
 ### get
 
