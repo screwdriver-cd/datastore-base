@@ -26,10 +26,10 @@ class Datastore {
      * Get a single record given an id
      * @method get
      * @param  {Object}   config            Configuration
-     * @param  {String}   config.table      table name
-     * @param  {Object}   config.params     query params
+     * @param  {String}   config.table      Table name
+     * @param  {Object}   config.params     Query params
      * @param  {Object}   config.params.id  Unique id
-     * @param  {Function} callback
+     * @param  {Function} callback          fn(err, data)
      */
     get() {
         console.error('get is not implemented');
@@ -40,10 +40,11 @@ class Datastore {
      * Create a record in the datastore
      * @method save
      * @param  {Object}   config                Configuration
-     * @param  {String}   config.table          table name
-     * @param  {Object}   config.params         record data
+     * @param  {String}   config.table          Table name
+     * @param  {Object}   config.params         Record data
      * @param  {String}   config.params.id      Unique id
-     * @param  {Function} callback
+     * @param  {Object}   config.params.data    The data to save
+     * @param  {Function} callback              fn(err, data)
      */
     save() {
         console.error('save is not implemented');
@@ -55,10 +56,11 @@ class Datastore {
      * Requires record to already exists
      * @method save
      * @param  {Object}   config                Configuration
-     * @param  {String}   config.table          table name
-     * @param  {Object}   config.params         record data
+     * @param  {String}   config.table          Table name
+     * @param  {Object}   config.params         Record data
+     * @param  {Object}   config.params.data    The data to save
      * @param  {String}   config.params.id      Unique id
-     * @param  {Function} callback
+     * @param  {Function} callback              fn(err, data)
      */
     update() {
         console.error('update is not implemented');
@@ -69,10 +71,12 @@ class Datastore {
      * Fetch multiple records from datastore
      * @method scan
      * @param  {Object}   config                Configuration
-     * @param  {String}   config.table          table name
-     * @param  {Object}   config.params         query parameters
-     * @param  {Object}   config.paginate       pagination parameters
-     * @param  {Function} callback
+     * @param  {String}   config.table          Table name
+     * @param  {Object}   config.params         Query parameters
+     * @param  {Object}   config.paginate       Pagination parameters
+     * @param  {Number}   config.paginate.count Number of items per page
+     * @param  {Number}   config.paginate.page  Specific page of the set to return
+     * @param  {Function} callback              fn(err, data)
      */
     scan() {
         console.error('scan is not implemented');

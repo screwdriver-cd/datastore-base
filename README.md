@@ -33,6 +33,64 @@ store.get({ params: { id: 1 } }, (err, data) => {
     // do something....
 });
 ```
+## Expected inputs and outputs for datastore implementations
+
+### get
+
+Obtain a single record given an id. Returns `null` if the record or table does not exist.
+
+**Arguments**
+
+* `config` - An `object`. Each of its properties defines your get operation
+* `config.table` - A `string`. The datastore table name
+* `config.params` - An `object`. Each of its properties defines the get parameters
+* `config.params.id` - A `string`. The ID of the item to fetch from the datastore
+* `callback(err, result)`  - A callback which is called when the task has succeeded. It receives the `err` and `result`. The result is always returned, with a `null` value designating that there is no item to be found.
+
+###  save
+
+Save a record in the datastore. Returns saved data.
+
+**Arguments**
+
+* `config` - An `object`. Each of its properties defines your save operation
+* `config.table` - A `string`. The datastore table name
+* `config.params` - An `object`. Each of its properties defines the save parameters
+* `config.params.id` - A `string`. The ID to associate the data with
+* `config.params.data` - An `object`. This is what will be saved in the datastore
+* `callback(err, result)`  - A callback which is called when the task has succeeded. It receives the `err` and `result`, where `result` is the data that was saved in the datastore.
+
+###  update
+
+Update a record in the datastore. Returns `null` if the record does not exist.
+
+**Arguments**
+
+* `config` - An `object`. Each of its properties defines your save operation
+* `config.table` - A `string`. The datastore table name
+* `config.params` - An `object`. Each of its properties defines the save parameters
+* `config.params.id` - A `string`. The ID to associate the data with
+* `config.params.data` - An `object`. This is what will be saved in the datastore
+* `callback(err, result)` - A callback which is called when the task is completed. It receives the `err` and `result`. The result is always returned, with a `null` value if the record does not exist.
+
+### scan
+
+Fetch multiple records from the datastore. Returns `[]` if the records do not exist.
+
+**Arguments**
+
+* `config` - An `object`. Each of its properties defines your scan operation
+* `config.table` - A `string`. The datastore table name
+* `config.params` - An `object`. Each of its properties defines the query parameters
+* `config.paginate` - An `object`. Each of its properties further defines the characteristics for pagination
+* `config.paginate.count` - An `integer`. This is the number of items per page
+* `config.paginate.page` - An `integer`. This is the page number of the set you wish for the datastore to return
+* `callback(err, result)`  - A callback which is called when the task has succeeded. It receives the `err` and `result`. The result is always returned, with an empty array `[]` value designating that there is no item to be found.
+
+#### Example datastores
+- [screwdriver-datastore-imdb](https://github.com/screwdriver-cd/screwdriver-datastore-imdb)
+- [screwdriver-datastore-dynamodb](https://github.com/screwdriver-cd/datastore-dynamodb)
+
 
 ## Testing
 
