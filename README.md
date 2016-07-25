@@ -96,7 +96,7 @@ Update a record in the datastore. Returns `null` if the record does not exist.
 
 ### scan
 
-Fetch multiple records from the datastore. Returns `[]` if the records do not exist.
+Fetch multiple records from the datastore. Returns error if table does not exist. Returns `[]` if the table is empty.
 
 **Arguments**
 
@@ -106,7 +106,11 @@ Fetch multiple records from the datastore. Returns `[]` if the records do not ex
 * `config.paginate` - An `object`. Each of its properties further defines the characteristics for pagination
 * `config.paginate.count` - An `integer`. This is the number of items per page
 * `config.paginate.page` - An `integer`. This is the page number of the set you wish for the datastore to return
-* `callback(err, result)`  - A callback which is called when the task has succeeded. It receives the `err` and `result`. The result is always returned, with an empty array `[]` value designating that there is no item to be found.
+* `callback(err, result)`  - A callback which is called when the task has succeeded. It receives the `err` and `result`. The expected behavior is:
+    * Return an error if the table does not exist.
+    * Return an error if the call fails for any reason.
+    * Return an empty array `[]` if the table is empty.
+    * Return an array of entries if the table is not empty.
 
 #### Example datastores
 - [screwdriver-datastore-imdb](https://github.com/screwdriver-cd/screwdriver-datastore-imdb)
