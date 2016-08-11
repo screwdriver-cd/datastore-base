@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:screwdriver-cd/screwdriver-datastore-base.git"
+    "url": "git@github.com:screwdriver-cd/datastore-base.git"
   },
-  "homepage": "https://github.com/screwdriver-cd/screwdriver-datastore-base",
-  "bugs": "https://github.com/screwdriver-cd/screwdriver-datastore-base/issues",
+  "homepage": "https://github.com/screwdriver-cd/datastore-base",
+  "bugs": "https://github.com/screwdriver-cd/datastore-base/issues",
   "keywords": [
     "screwdriver",
     "yahoo"
