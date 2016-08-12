@@ -113,7 +113,7 @@ Fetch multiple records from the datastore. Returns error if table does not exist
     * Return an array of entries if the table is not empty.
 
 #### Example datastores
-- [screwdriver-datastore-imdb](https://github.com/screwdriver-cd/screwdriver-datastore-imdb)
+- [screwdriver-datastore-imdb](https://github.com/screwdriver-cd/datastore-imdb)
 - [screwdriver-datastore-dynamodb](https://github.com/screwdriver-cd/datastore-dynamodb)
 
 
