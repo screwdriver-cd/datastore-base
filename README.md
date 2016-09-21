@@ -17,24 +17,23 @@ npm install screwdriver-datastore-base
 ```js
 class MyDatastore extends Datastore {
     // Implement the interface
-    _get(config, callback) {
+    _get(config) {
 
         // do something to fetch data...
 
         if (config.params.id > 0) {
-            return callback(null, { id: config.params.id });
+            return Promise.resolve({ id: config.params.id });
         }
 
-        return process.nextTick(() => {
-            callback(new Error('invalid id'));
-        });
+        return Promise.reject('Some error');
     }
 }
 
 const store = new MyDatastore({});
-store.get({ table: 'tablename', params: { id: 1 } }, (err, data) => {
-    // do something....
-});
+return store.get({ table: 'tablename', params: { id: 1 } })
+    .then((err, data) => {
+        // do something....
+    });
 ```
 
 The base class exposes a set of functions:
@@ -54,63 +53,91 @@ To take advantage of the input validation, override these functions:
 * `_scan`
 * `_remove`
 
-## Validation
+## Interface
 
 ### get
 
-Obtain a single record given an id. Returns `null` if the record or table does not exist.
+| Parameter | Type | Description |
+| :-- | :-- | :-- |
+|config | Object | Each of its properties defines your get operation |
+|config.table | String | The datastore table name |
+|config.params| Object | Each of its properties defines the get parameters |
+|config.params.id| String | The ID of the item to fetch from the datastore |
 
-**Arguments**
 
-* `config` - An `object`. Each of its properties defines your get operation
-* `config.table` - A `string`. The datastore table name
-* `config.params` - An `object`. Each of its properties defines the get parameters
-* `config.params.id` - A `string`. The ID of the item to fetch from the datastore
-* `callback(err, result)`  - A callback which is called when the task has succeeded. It receives the `err` and `result`. The result is always returned, with a `null` value designating that there is no item to be found.
+#### Expected Outcome
+The get function is expected to fetch a single record with a specific id.
+
+#### Expected Return
+A promise that resolves to the record if found, null if not found, and rejects if it fails.
 
 ###  save
 
-Save a record in the datastore. Returns saved data.
+| Parameter | Type | Description |
+| :-- | :-- | :-- |
+|config | Object | Each of its properties defines your get operation |
+|config.table | String | The datastore table name |
+|config.params| Object | Each of its properties defines the get parameters |
+|config.params.id| String |  The ID that the data is associated with |
+|config.params.data| Object | The data that will be saved in the datastore |
 
-**Arguments**
+#### Expected Outcome
+The save function is expected to save a record to the datastore.
 
-* `config` - An `object`. Each of its properties defines your save operation
-* `config.table` - A `string`. The datastore table name
-* `config.params` - An `object`. Each of its properties defines the save parameters
-* `config.params.id` - A `string`. The ID to associate the data with
-* `config.params.data` - An `object`. This is what will be saved in the datastore
-* `callback(err, result)`  - A callback which is called when the task has succeeded. It receives the `err` and `result`, where `result` is the data that was saved in the datastore.
+#### Expected Return
+A promise that resolves to the record if saved successfully, or rejects if it fails.
+
+
+###  remove
+
+| Parameter | Type | Description |
+| :-- | :-- | :-- |
+|config | Object | Each of its properties defines your get operation |
+|config.table | String | The datastore table name |
+|config.params| Object | Each of its properties defines the get parameters |
+|config.params.id| String |  The ID of the data to remove |
+
+#### Expected Outcome
+The remove function is expected to remove a record from the datastore.
+
+#### Expected Return
+A promise that resolves to null if remove successfully, or rejects if it fails.
+
 
 ###  update
 
+| Parameter | Type | Description |
+| :-- | :-- | :-- |
+|config | Object | Each of its properties defines your get operation |
+|config.table | String | The datastore table name |
+|config.params| Object | Each of its properties defines the get parameters |
+|config.params.id| String | The ID that the data is associated with |
+|config.params.data| Object | The data to be updated in the datastore |
+
 Update a record in the datastore. Returns `null` if the record does not exist.
 
-**Arguments**
+#### Expected Outcome
+The update function is expected to update a record in the datastore.
 
-* `config` - An `object`. Each of its properties defines your save operation
-* `config.table` - A `string`. The datastore table name
-* `config.params` - An `object`. Each of its properties defines the save parameters
-* `config.params.id` - A `string`. The ID to associate the data with
-* `config.params.data` - An `object`. This is what will be saved in the datastore
-* `callback(err, result)` - A callback which is called when the task is completed. It receives the `err` and `result`. The result is always returned, with a `null` value if the record does not exist.
+#### Expected Return
+A promise that resolves to the record if updated successfully, null if the record does not exist, and rejects if fails.
 
 ### scan
 
-Fetch multiple records from the datastore. Returns error if table does not exist. Returns `[]` if the table is empty.
+| Parameter | Type | Description |
+| :-- | :-- | :-- |
+|config | Object | Each of its properties defines your get operation |
+|config.table | String | The datastore table name |
+|config.params| Object | Query to filter on |
+|config.paginate| Object | Each of its properties further defines the characteristics for pagination |
+|config.paginate.count| Integer | Number of items per page |
+|config.paginate.page| Integer | Page number of the set you wish for the datastore to return |
 
-**Arguments**
+#### Expected Outcome
+The scan function is expected to fetch multiple records from the datastore.
 
-* `config` - An `object`. Each of its properties defines your scan operation
-* `config.table` - A `string`. The datastore table name
-* `config.params` - An `object`. Each of its properties defines the query parameters
-* `config.paginate` - An `object`. Each of its properties further defines the characteristics for pagination
-* `config.paginate.count` - An `integer`. This is the number of items per page
-* `config.paginate.page` - An `integer`. This is the page number of the set you wish for the datastore to return
-* `callback(err, result)`  - A callback which is called when the task has succeeded. It receives the `err` and `result`. The expected behavior is:
-    * Return an error if the table does not exist.
-    * Return an error if the call fails for any reason.
-    * Return an empty array `[]` if the table is empty.
-    * Return an array of entries if the table is not empty.
+#### Expected Return
+A promise that resolves to an array of records, or rejects if fails.
 
 #### Example datastores
 - [screwdriver-datastore-imdb](https://github.com/screwdriver-cd/datastore-imdb)

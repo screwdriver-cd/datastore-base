@@ -1,8 +1,25 @@
 'use strict';
 /* eslint-disable no-underscore-dangle */
 const Joi = require('joi');
-const schema = require('screwdriver-data-schema');
-const datastoreSchema = schema.plugins.datastore;
+const dataSchema = require('screwdriver-data-schema');
+const datastoreSchema = dataSchema.plugins.datastore;
+
+/**
+* Validate the config using the schema
+* @method  validate
+* @param  {Object}    config       Configuration
+* @param  {Object}    schema       Joi object used for validation
+* @return {Promise}
+*/
+function validate(config, schema) {
+    const result = Joi.validate(config, schema);
+
+    if (result.error) {
+        return Promise.reject(result.error);
+    }
+
+    return Promise.resolve(config);
+}
 
 class Datastore {
     /**
@@ -32,20 +49,14 @@ class Datastore {
      * @param  {String}   config.table      Table name
      * @param  {Object}   config.params     Query params
      * @param  {String}   config.params.id  Unique id
-     * @param  {Function} callback          fn(err, data)
      */
-    get(config, callback) {
-        const result = Joi.validate(config, datastoreSchema.get);
-
-        if (result.error) {
-            return callback(result.error);
-        }
-
-        return this._get(config, callback);
+    get(config) {
+        return validate(config, datastoreSchema.get)
+            .then((validConfig) => this._get(validConfig));
     }
 
-    _get(config, callback) {
-        callback(new Error('not implemented'));
+    _get() {
+        return Promise.reject('Not implemented');
     }
 
     /**
@@ -56,20 +67,14 @@ class Datastore {
      * @param  {Object}   config.params         Record data
      * @param  {String}   config.params.id      Unique id
      * @param  {Object}   config.params.data    The data to save
-     * @param  {Function} callback              fn(err, data)
      */
-    save(config, callback) {
-        const result = Joi.validate(config, datastoreSchema.save);
-
-        if (result.error) {
-            return callback(result.error);
-        }
-
-        return this._save(config, callback);
+    save(config) {
+        return validate(config, datastoreSchema.save)
+            .then((validConfig) => this._save(validConfig));
     }
 
-    _save(config, callback) {
-        callback(new Error('not implemented'));
+    _save() {
+        return Promise.reject('Not implemented');
     }
 
     /**
@@ -81,20 +86,14 @@ class Datastore {
      * @param  {Object}   config.params         Record data
      * @param  {String}   config.params.id      Unique id
      * @param  {Object}   config.params.data    The data to save
-     * @param  {Function} callback              fn(err, data)
      */
-    update(config, callback) {
-        const result = Joi.validate(config, datastoreSchema.update);
-
-        if (result.error) {
-            return callback(result.error);
-        }
-
-        return this._update(config, callback);
+    update(config) {
+        return validate(config, datastoreSchema.update)
+            .then((validConfig) => this._update(validConfig));
     }
 
-    _update(config, callback) {
-        callback(new Error('not implemented'));
+    _update() {
+        return Promise.reject('Not implemented');
     }
 
     /**
@@ -106,20 +105,14 @@ class Datastore {
      * @param  {Object}   config.paginate       Pagination parameters
      * @param  {Number}   config.paginate.count Number of items per page
      * @param  {Number}   config.paginate.page  Specific page of the set to return
-     * @param  {Function} callback              fn(err, data)
      */
-    scan(config, callback) {
-        const result = Joi.validate(config, datastoreSchema.scan);
-
-        if (result.error) {
-            return callback(result.error);
-        }
-
-        return this._scan(config, callback);
+    scan(config) {
+        return validate(config, datastoreSchema.scan)
+            .then((validConfig) => this._scan(validConfig));
     }
 
-    _scan(config, callback) {
-        callback(new Error('not implemented'));
+    _scan() {
+        return Promise.reject('Not implemented');
     }
 
     /**
@@ -129,20 +122,14 @@ class Datastore {
      * @param  {String}   config.table      table name
      * @param  {Object}   config.params     query params
      * @param  {Object}   config.params.id  Unique id
-     * @param  {Function} callback
      */
-    remove(config, callback) {
-        const result = Joi.validate(config, datastoreSchema.remove);
-
-        if (result.error) {
-            return callback(result.error);
-        }
-
-        return this._remove(config, callback);
+    remove(config) {
+        return validate(config, datastoreSchema.remove)
+            .then((validConfig) => this._remove(validConfig));
     }
 
-    _remove(config, callback) {
-        callback(new Error('not implemented'));
+    _remove() {
+        return Promise.reject('Not implemented');
     }
 }
 
