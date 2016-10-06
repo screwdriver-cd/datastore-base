@@ -1,5 +1,5 @@
 # datastore base
-[![Version][npm-image]][npm-url] ![Downloads][downloads-image] [![Build Status][wercker-image]][wercker-url] [![Open Issues][issues-image]][issues-url] [![Dependency Status][daviddm-image]][daviddm-url] ![License][license-image]
+[![Version][npm-image]][npm-url] ![Downloads][downloads-image] [![Build Status][status-image]][status-url] [![Open Issues][issues-image]][issues-url] [![Dependency Status][daviddm-image]][daviddm-url] ![License][license-image]
 
 > Base class defining the interface for datastore implementations
 
@@ -160,7 +160,7 @@ Code licensed under the BSD 3-Clause license. See LICENSE file for terms.
 [license-image]: https://img.shields.io/npm/l/screwdriver-datastore-base.svg
 [issues-image]: https://img.shields.io/github/issues/screwdriver-cd/datastore-base.svg
 [issues-url]: https://github.com/screwdriver-cd/datastore-base/issues
-[wercker-image]: https://app.wercker.com/status/fbf5553a4f8821567edc6394e976f4ab
-[wercker-url]: https://app.wercker.com/project/bykey/fbf5553a4f8821567edc6394e976f4ab
+[status-image]: https://cd.screwdriver.cd/pipelines/e9250a1ac07eac244c724a4573d447c8911e1ff1/badge
+[status-url]: https://cd.screwdriver.cd/pipelines/e9250a1ac07eac244c724a4573d447c8911e1ff1
 [daviddm-image]: https://david-dm.org/screwdriver-cd/datastore-base.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/screwdriver-cd/datastore-base
