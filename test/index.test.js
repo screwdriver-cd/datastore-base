@@ -66,10 +66,11 @@ describe('index test', () => {
         assert.instanceOf(instance, Datastore);
     });
 
-    describe('configure', () => {
-        it('has a configure method', () => {
-            assert.isFunction(instance.configure);
-            instance.configure({});
+    describe('setup', () => {
+        it('has a setup method', () => {
+            assert.isFunction(instance.setup);
+
+            return instance.setup();
         });
     });
 

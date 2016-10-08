@@ -33,13 +33,12 @@ class Datastore {
     }
 
     /**
-     * Reload configuration
-     * @method configure
-     * @param  {Object}     config      Configuration
-     * @param  {Function}   [callback]
+     * Setup database connections and get tables in order
+     * @method setup
+     * @return Promise
      */
-    configure(config) {
-        this.config = config;
+    setup() {
+        return Promise.resolve();
     }
 
     /**
