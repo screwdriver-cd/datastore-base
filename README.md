@@ -53,6 +53,9 @@ To take advantage of the input validation, override these functions:
 * `_scan`
 * `_remove`
 
+Additionally, there is a `setup` function which will be called by Screwdriver to allow the
+datastore to create or upgrade tables as needed.
+
 ## Interface
 
 ### get
