@@ -1,4 +1,5 @@
 'use strict';
+
 /* eslint-disable no-underscore-dangle */
 const assert = require('chai').assert;
 const Joi = require('joi');

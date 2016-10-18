@@ -1,4 +1,5 @@
 'use strict';
+
 /* eslint-disable no-underscore-dangle */
 const Joi = require('joi');
 const dataSchema = require('screwdriver-data-schema');
@@ -51,7 +52,7 @@ class Datastore {
      */
     get(config) {
         return validate(config, datastoreSchema.get)
-            .then((validConfig) => this._get(validConfig));
+            .then(validConfig => this._get(validConfig));
     }
 
     _get() {
@@ -69,7 +70,7 @@ class Datastore {
      */
     save(config) {
         return validate(config, datastoreSchema.save)
-            .then((validConfig) => this._save(validConfig));
+            .then(validConfig => this._save(validConfig));
     }
 
     _save() {
@@ -88,7 +89,7 @@ class Datastore {
      */
     update(config) {
         return validate(config, datastoreSchema.update)
-            .then((validConfig) => this._update(validConfig));
+            .then(validConfig => this._update(validConfig));
     }
 
     _update() {
@@ -107,7 +108,7 @@ class Datastore {
      */
     scan(config) {
         return validate(config, datastoreSchema.scan)
-            .then((validConfig) => this._scan(validConfig));
+            .then(validConfig => this._scan(validConfig));
     }
 
     _scan() {
@@ -124,7 +125,7 @@ class Datastore {
      */
     remove(config) {
         return validate(config, datastoreSchema.remove)
-            .then((validConfig) => this._remove(validConfig));
+            .then(validConfig => this._remove(validConfig));
     }
 
     _remove() {
