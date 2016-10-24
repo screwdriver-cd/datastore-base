@@ -163,7 +163,7 @@ Code licensed under the BSD 3-Clause license. See LICENSE file for terms.
 [license-image]: https://img.shields.io/npm/l/screwdriver-datastore-base.svg
 [issues-image]: https://img.shields.io/github/issues/screwdriver-cd/datastore-base.svg
 [issues-url]: https://github.com/screwdriver-cd/datastore-base/issues
-[status-image]: https://cd.screwdriver.cd/pipelines/e9250a1ac07eac244c724a4573d447c8911e1ff1/badge
-[status-url]: https://cd.screwdriver.cd/pipelines/e9250a1ac07eac244c724a4573d447c8911e1ff1
+[status-image]: https://cd.screwdriver.cd/pipelines/85215fd5d79b9f5f0c42b8c38c0f9bc5b356f150/badge
+[status-url]: https://cd.screwdriver.cd/pipelines/85215fd5d79b9f5f0c42b8c38c0f9bc5b356f150
 [daviddm-image]: https://david-dm.org/screwdriver-cd/datastore-base.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/screwdriver-cd/datastore-base
