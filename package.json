@@ -9,7 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:screwdriver-cd/datastore-base.git"
+    "url": "git@github.com:screwdriver-cd/datastore-base.git",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "homepage": "https://github.com/screwdriver-cd/datastore-base",
   "bugs": "https://github.com/screwdriver-cd/datastore-base/issues",
@@ -28,6 +29,12 @@
     "St. John Johnson <st.john.johnson@gmail.com",
     "Tiffany Kyi <tiffanykyi@gmail.com>"
   ],
+  "release": {
+    "debug": false,
+    "verifyConditions": {
+      "path": "./node_modules/semantic-release/src/lib/plugin-noop.js"
+    }
+  },
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.2.2",
