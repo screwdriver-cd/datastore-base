@@ -80,9 +80,7 @@ A promise that resolves to the record if found, null if not found, and rejects i
 | :-- | :-- | :-- |
 |config | Object | Each of its properties defines your get operation |
 |config.table | String | The datastore table name |
-|config.params| Object | Each of its properties defines the get parameters |
-|config.params.id| String |  The ID that the data is associated with |
-|config.params.data| Object | The data that will be saved in the datastore |
+|config.params| Object | The data that will be saved in the datastore |
 
 #### Expected Outcome
 The save function is expected to save a record to the datastore.
@@ -113,9 +111,8 @@ A promise that resolves to null if remove successfully, or rejects if it fails.
 | :-- | :-- | :-- |
 |config | Object | Each of its properties defines your get operation |
 |config.table | String | The datastore table name |
-|config.params| Object | Each of its properties defines the get parameters |
+|config.params| Object | The data to be updated in the datastore |
 |config.params.id| String | The ID that the data is associated with |
-|config.params.data| Object | The data to be updated in the datastore |
 
 Update a record in the datastore. Returns `null` if the record does not exist.
 

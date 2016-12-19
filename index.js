@@ -65,8 +65,6 @@ class Datastore {
      * @param  {Object}   config                Configuration
      * @param  {String}   config.table          Table name
      * @param  {Object}   config.params         Record data
-     * @param  {String}   config.params.id      Unique id
-     * @param  {Object}   config.params.data    The data to save
      */
     save(config) {
         return validate(config, datastoreSchema.save)
@@ -85,7 +83,6 @@ class Datastore {
      * @param  {String}   config.table          Table name
      * @param  {Object}   config.params         Record data
      * @param  {String}   config.params.id      Unique id
-     * @param  {Object}   config.params.data    The data to save
      */
     update(config) {
         return validate(config, datastoreSchema.update)
