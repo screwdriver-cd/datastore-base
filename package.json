@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "pretest": "eslint .",
-    "test": "jenkins-mocha --recursive"
+    "test": "jenkins-mocha --recursive",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:screwdriver-cd/datastore-base.git",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "url": "git@github.com:screwdriver-cd/datastore-base.git"
   },
   "homepage": "https://github.com/screwdriver-cd/datastore-base",
   "bugs": "https://github.com/screwdriver-cd/datastore-base/issues",
