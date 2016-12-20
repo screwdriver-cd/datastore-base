@@ -1,14 +1,16 @@
 'use strict';
 
-/* eslint-disable no-underscore-dangle */
 const assert = require('chai').assert;
 const Joi = require('joi');
 const mockery = require('mockery');
 
-describe('index test', () => {
+describe('index test', function () {
     let instance;
     let Datastore;
     let schemaMock;
+
+    // Time not important. Only life important.
+    this.timeout(5000);
 
     before(() => {
         mockery.enable({
@@ -56,7 +58,6 @@ describe('index test', () => {
     afterEach(() => {
         instance = null;
         mockery.deregisterAll();
-        mockery.resetCache();
     });
 
     after(() => {
