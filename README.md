@@ -158,9 +158,9 @@ Code licensed under the BSD 3-Clause license. See LICENSE file for terms.
 [npm-url]: https://npmjs.org/package/screwdriver-datastore-base
 [downloads-image]: https://img.shields.io/npm/dt/screwdriver-datastore-base.svg
 [license-image]: https://img.shields.io/npm/l/screwdriver-datastore-base.svg
-[issues-image]: https://img.shields.io/github/issues/screwdriver-cd/datastore-base.svg
-[issues-url]: https://github.com/screwdriver-cd/datastore-base/issues
-[status-image]: https://cd.screwdriver.cd/pipelines/85215fd5d79b9f5f0c42b8c38c0f9bc5b356f150/badge
-[status-url]: https://cd.screwdriver.cd/pipelines/85215fd5d79b9f5f0c42b8c38c0f9bc5b356f150
+[issues-image]: https://img.shields.io/github/issues/screwdriver-cd/screwdriver.svg
+[issues-url]: https://github.com/screwdriver-cd/screwdriver/issues
+[status-image]: https://cd.screwdriver.cd/pipelines/14/badge
+[status-url]: https://cd.screwdriver.cd/pipelines/14
 [daviddm-image]: https://david-dm.org/screwdriver-cd/datastore-base.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/screwdriver-cd/datastore-base
