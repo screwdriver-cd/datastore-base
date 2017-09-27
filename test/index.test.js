@@ -100,7 +100,7 @@ describe('index test', function () {
                     throw new Error('Oops');
                 }, (err) => {
                     assert.isOk(err, 'Error should be returned');
-                    assert.equal(err, 'Not implemented');
+                    assert.equal(err.message, 'Not implemented');
                 });
         });
     });
@@ -132,7 +132,7 @@ describe('index test', function () {
                     throw new Error('Oops');
                 }, (err) => {
                     assert.isOk(err, 'Error should be returned');
-                    assert.equal(err, 'Not implemented');
+                    assert.equal(err.message, 'Not implemented');
                 });
         });
     });
@@ -164,7 +164,7 @@ describe('index test', function () {
                     throw new Error('Oops');
                 }, (err) => {
                     assert.isOk(err, 'Error should be returned');
-                    assert.equal(err, 'Not implemented');
+                    assert.equal(err.message, 'Not implemented');
                 });
         });
     });
@@ -194,7 +194,7 @@ describe('index test', function () {
                     throw new Error('Oops');
                 }, (err) => {
                     assert.isOk(err, 'Error should be returned');
-                    assert.equal(err, 'Not implemented');
+                    assert.equal(err.message, 'Not implemented');
                 });
         });
     });
@@ -223,7 +223,7 @@ describe('index test', function () {
                     throw new Error('Oops');
                 }, (err) => {
                     assert.isOk(err, 'Error should be returned');
-                    assert.equal(err, 'Not implemented');
+                    assert.equal(err.message, 'Not implemented');
                 });
         });
     });

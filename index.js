@@ -56,7 +56,7 @@ class Datastore {
     }
 
     _get() {
-        return Promise.reject('Not implemented');
+        return Promise.reject(new Error('Not implemented'));
     }
 
     /**
@@ -72,7 +72,7 @@ class Datastore {
     }
 
     _save() {
-        return Promise.reject('Not implemented');
+        return Promise.reject(new Error('Not implemented'));
     }
 
     /**
@@ -90,7 +90,7 @@ class Datastore {
     }
 
     _update() {
-        return Promise.reject('Not implemented');
+        return Promise.reject(new Error('Not implemented'));
     }
 
     /**
@@ -109,7 +109,7 @@ class Datastore {
     }
 
     _scan() {
-        return Promise.reject('Not implemented');
+        return Promise.reject(new Error('Not implemented'));
     }
 
     /**
@@ -126,7 +126,7 @@ class Datastore {
     }
 
     _remove() {
-        return Promise.reject('Not implemented');
+        return Promise.reject(new Error('Not implemented'));
     }
 }
 
