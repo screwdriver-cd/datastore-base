@@ -1,6 +1,6 @@
 'use strict';
 
-const assert = require('chai').assert;
+const { assert } = require('chai');
 const Joi = require('joi');
 const mockery = require('mockery');
 
