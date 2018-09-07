@@ -3,13 +3,12 @@ shared:
 
 jobs:
     main:
+        environment:
+            SD_SONAR_OPTS: "-Dsonar.sources=index.js -Dsonar.javascript.lcov.reportPath=artifacts/coverage/lcov.info"
         requires: [~pr, ~commit]
         steps:
             - install: npm install
             - test: npm test
-        requires:
-            - ~pr
-            - ~commit
 
     publish:
         requires: main
@@ -19,5 +18,3 @@ jobs:
             - NPM_TOKEN
             # Pushing tags to Git
             - GH_TOKEN
-        requires:
-            - main
