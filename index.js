@@ -119,7 +119,7 @@ class Datastore {
      * @param  {Array<Object>} [config.queries]      Map of database type to query
      * @param  {String}        [config.table]        Table name
      * @param  {Object}        [config.replacements] Parameters to replace in the query
-     * @param  {Boolean}       [config.rawResponse]  Return raw response
+     * @param  {Boolean}       [config.rawResponse]  Return raw response without binding to model
      */
     query(config) {
         return validate(config, datastoreSchema.query)
