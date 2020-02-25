@@ -113,6 +113,24 @@ class Datastore {
     }
 
     /**
+     * Run raw query on the datastore
+     * @method query
+     * @param  {Object}        config                Configuration object
+     * @param  {Array<Object>} [config.queries]      Map of database type to query
+     * @param  {String}        [config.table]        Table name
+     * @param  {Object}        [config.replacements] Parameters to replace in the query
+     * @param  {Boolean}       [config.rawResponse]  Return raw response
+     */
+    query(config) {
+        return validate(config, datastoreSchema.query)
+            .then(validConfig => this._query(validConfig));
+    }
+
+    _query() {
+        return Promise.reject(new Error('Not implemented'));
+    }
+
+    /**
      * Remove a single record given an id
      * @method remove
      * @param  {Object}   config            Configuration
