@@ -39,6 +39,14 @@ describe('index test', function () {
                         table: Joi.string().required(),
                         paginate: Joi.object().required()
                     }),
+                    query: Joi.object().keys({
+                        table: Joi.string().required(),
+                        queries: Joi.array().items(
+                            Joi.object().keys({
+                                dbType: Joi.string().required(),
+                                query: Joi.string().required()
+                            })).required()
+                    }),
                     remove: Joi.object().keys({
                         table: Joi.string().required(),
                         params: Joi.object().required()
@@ -190,6 +198,36 @@ describe('index test', function () {
             };
 
             return instance.scan(config)
+                .then(() => {
+                    throw new Error('Oops');
+                }, (err) => {
+                    assert.isOk(err, 'Error should be returned');
+                    assert.equal(err.message, 'Not implemented');
+                });
+        });
+    });
+
+    describe('query', () => {
+        it('returns error when invalid config object', () =>
+            instance.query({})
+                .then(() => {
+                    throw new Error('Oops');
+                }, (err) => {
+                    assert.isOk(err, 'Error should be returned');
+                    assert.equal(err.name, 'ValidationError');
+                })
+        );
+
+        it('returns error if config object is valid and _scan not overridden', () => {
+            const config = {
+                table: 'tableName',
+                queries: [{
+                    dbType: 'postgres',
+                    query: 'SELECT * FROM builds'
+                }]
+            };
+
+            return instance.query(config)
                 .then(() => {
                     throw new Error('Oops');
                 }, (err) => {
