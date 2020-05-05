@@ -42,6 +42,7 @@ The base class exposes a set of functions:
 * `update`
 * `scan`
 * `remove`
+* `query`
 
 All of those functions provide input validation on the config object being passed in,
 and call an underlying function with the arguments passed in.
@@ -52,6 +53,7 @@ To take advantage of the input validation, override these functions:
 * `_update`
 * `_scan`
 * `_remove`
+* `_query`
 
 Additionally, there is a `setup` function which will be called by Screwdriver to allow the
 datastore to create or upgrade tables as needed.
@@ -142,6 +144,22 @@ A promise that resolves to an array of records, or rejects if fails.
 #### Example datastores
 - [screwdriver-datastore-imdb](https://github.com/screwdriver-cd/datastore-imdb)
 - [screwdriver-datastore-dynamodb](https://github.com/screwdriver-cd/datastore-dynamodb)
+
+### query
+
+| Parameter | Type | Description |
+| :-- | :-- | :-- |
+|config | Object | Each of its properties defines your operation |
+|config.table | String | The datastore table name |
+|config.queries| Array | Map of datastore type to related query |
+|config.replacements| Object | Each of its properties are parameters that are replaced in the query |
+|config.rawResponse| Boolean | Whether to return raw response or bind to model associated with table |
+
+#### Expected Outcome
+The query function is expected to run one of the given queries, based on datastore type, and return the response, either as raw data or bound to a model.
+
+#### Expected Return
+A promise that resolves to an array of records, or rejects if fails.
 
 
 ## Testing
