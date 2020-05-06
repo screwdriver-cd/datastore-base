@@ -218,7 +218,7 @@ describe('index test', function () {
                 })
         );
 
-        it('returns error if config object is valid and _scan not overridden', () => {
+        it('returns error if config object is valid and _query not overridden', () => {
             const config = {
                 table: 'tableName',
                 queries: [{
