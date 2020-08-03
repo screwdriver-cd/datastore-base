@@ -1,7 +1,6 @@
 'use strict';
 
 /* eslint-disable no-underscore-dangle */
-const Joi = require('joi');
 const dataSchema = require('screwdriver-data-schema');
 const datastoreSchema = dataSchema.plugins.datastore;
 
@@ -13,7 +12,7 @@ const datastoreSchema = dataSchema.plugins.datastore;
 * @return {Promise}
 */
 function validate(config, schema) {
-    const result = Joi.validate(config, schema);
+    const result = schema.validate(config);
 
     if (result.error) {
         return Promise.reject(result.error);
