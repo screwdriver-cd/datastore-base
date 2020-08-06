@@ -1,7 +1,7 @@
 'use strict';
 
 const { assert } = require('chai');
-const Joi = require('@hapi/joi');
+const Joi = require('joi');
 const mockery = require('mockery');
 
 describe('index test', function () {
