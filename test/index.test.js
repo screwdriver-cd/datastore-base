@@ -4,7 +4,7 @@ const { assert } = require('chai');
 const Joi = require('joi');
 const mockery = require('mockery');
 
-describe('index test', function () {
+describe('index test', function() {
     let instance;
     let Datastore;
     let schemaMock;
@@ -41,11 +41,14 @@ describe('index test', function () {
                     }),
                     query: Joi.object().keys({
                         table: Joi.string().required(),
-                        queries: Joi.array().items(
-                            Joi.object().keys({
-                                dbType: Joi.string().required(),
-                                query: Joi.string().required()
-                            })).required()
+                        queries: Joi.array()
+                            .items(
+                                Joi.object().keys({
+                                    dbType: Joi.string().required(),
+                                    query: Joi.string().required()
+                                })
+                            )
+                            .required()
                     }),
                     remove: Joi.object().keys({
                         table: Joi.string().required(),
@@ -86,14 +89,15 @@ describe('index test', function () {
 
     describe('get', () => {
         it('returns error when invalid config object', () =>
-            instance.get({})
-                .then(() => {
+            instance.get({}).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.name, 'ValidationError');
-                })
-        );
+                }
+            ));
 
         it('returns not implemented if config object is valid and _get not overridden', () => {
             const config = {
@@ -103,26 +107,29 @@ describe('index test', function () {
                 }
             };
 
-            return instance.get(config)
-                .then(() => {
+            return instance.get(config).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.message, 'Not implemented');
-                });
+                }
+            );
         });
     });
 
     describe('save', () => {
         it('returns error when invalid config object', () =>
-            instance.save({})
-                .then(() => {
+            instance.save({}).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.name, 'ValidationError');
-                })
-        );
+                }
+            ));
 
         it('returns error if config object is valid and _save not overridden', () => {
             const config = {
@@ -135,26 +142,29 @@ describe('index test', function () {
                 }
             };
 
-            return instance.save(config)
-                .then(() => {
+            return instance.save(config).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.message, 'Not implemented');
-                });
+                }
+            );
         });
     });
 
     describe('update', () => {
         it('returns error when invalid config object', () =>
-            instance.update({})
-                .then(() => {
+            instance.update({}).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.name, 'ValidationError');
-                })
-        );
+                }
+            ));
 
         it('returns error if config object is valid and _update not overridden', () => {
             const config = {
@@ -167,26 +177,29 @@ describe('index test', function () {
                 }
             };
 
-            return instance.update(config)
-                .then(() => {
+            return instance.update(config).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.message, 'Not implemented');
-                });
+                }
+            );
         });
     });
 
     describe('scan', () => {
         it('returns error when invalid config object', () =>
-            instance.scan({})
-                .then(() => {
+            instance.scan({}).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.name, 'ValidationError');
-                })
-        );
+                }
+            ));
 
         it('returns error if config object is valid and _scan not overridden', () => {
             const config = {
@@ -197,56 +210,64 @@ describe('index test', function () {
                 }
             };
 
-            return instance.scan(config)
-                .then(() => {
+            return instance.scan(config).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.message, 'Not implemented');
-                });
+                }
+            );
         });
     });
 
     describe('query', () => {
         it('returns error when invalid config object', () =>
-            instance.query({})
-                .then(() => {
+            instance.query({}).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.name, 'ValidationError');
-                })
-        );
+                }
+            ));
 
         it('returns error if config object is valid and _query not overridden', () => {
             const config = {
                 table: 'tableName',
-                queries: [{
-                    dbType: 'postgres',
-                    query: 'SELECT * FROM builds'
-                }]
+                queries: [
+                    {
+                        dbType: 'postgres',
+                        query: 'SELECT * FROM builds'
+                    }
+                ]
             };
 
-            return instance.query(config)
-                .then(() => {
+            return instance.query(config).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.message, 'Not implemented');
-                });
+                }
+            );
         });
     });
 
     describe('remove', () => {
         it('returns error when invalid config object', () =>
-            instance.remove({})
-                .then(() => {
+            instance.remove({}).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.name, 'ValidationError');
-                })
-        );
+                }
+            ));
 
         it('returns error if config object is valid and _scan not overridden', () => {
             const config = {
@@ -256,26 +277,28 @@ describe('index test', function () {
                 }
             };
 
-            return instance.remove(config)
-                .then(() => {
+            return instance.remove(config).then(
+                () => {
                     throw new Error('Oops');
-                }, (err) => {
+                },
+                err => {
                     assert.isOk(err, 'Error should be returned');
                     assert.equal(err.message, 'Not implemented');
-                });
+                }
+            );
         });
     });
 
     it('can be extended', () => {
         class Foo extends Datastore {
             _get(config) {
-                const id = config.params.id;
+                const { id } = config.params;
 
                 if (id > 0) {
                     return Promise.resolve({ id });
                 }
 
-                return process.nextTick(() => Promise.reject('invalid id'));
+                return process.nextTick(() => Promise.reject(new Error('invalid id')));
             }
         }
 
@@ -289,9 +312,8 @@ describe('index test', function () {
 
         assert.instanceOf(bar, Datastore);
 
-        return bar.get(config)
-            .then((data) => {
-                assert.deepEqual(data, { id: 1 });
-            });
+        return bar.get(config).then(data => {
+            assert.deepEqual(data, { id: 1 });
+        });
     });
 });

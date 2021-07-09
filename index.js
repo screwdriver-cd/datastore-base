@@ -5,12 +5,12 @@ const dataSchema = require('screwdriver-data-schema');
 const datastoreSchema = dataSchema.plugins.datastore;
 
 /**
-* Validate the config using the schema
-* @method  validate
-* @param  {Object}    config       Configuration
-* @param  {Object}    schema       Joi object used for validation
-* @return {Promise}
-*/
+ * Validate the config using the schema
+ * @method  validate
+ * @param  {Object}    config       Configuration
+ * @param  {Object}    schema       Joi object used for validation
+ * @return {Promise}
+ */
 function validate(config, schema) {
     const result = schema.validate(config);
 
@@ -50,8 +50,7 @@ class Datastore {
      * @param  {String}   config.params.id  Unique id
      */
     get(config) {
-        return validate(config, datastoreSchema.get)
-            .then(validConfig => this._get(validConfig));
+        return validate(config, datastoreSchema.get).then(validConfig => this._get(validConfig));
     }
 
     _get() {
@@ -66,8 +65,7 @@ class Datastore {
      * @param  {Object}   config.params         Record data
      */
     save(config) {
-        return validate(config, datastoreSchema.save)
-            .then(validConfig => this._save(validConfig));
+        return validate(config, datastoreSchema.save).then(validConfig => this._save(validConfig));
     }
 
     _save() {
@@ -84,8 +82,7 @@ class Datastore {
      * @param  {String}   config.params.id      Unique id
      */
     update(config) {
-        return validate(config, datastoreSchema.update)
-            .then(validConfig => this._update(validConfig));
+        return validate(config, datastoreSchema.update).then(validConfig => this._update(validConfig));
     }
 
     _update() {
@@ -103,8 +100,7 @@ class Datastore {
      * @param  {Number}   config.paginate.page  Specific page of the set to return
      */
     scan(config) {
-        return validate(config, datastoreSchema.scan)
-            .then(validConfig => this._scan(validConfig));
+        return validate(config, datastoreSchema.scan).then(validConfig => this._scan(validConfig));
     }
 
     _scan() {
@@ -121,8 +117,7 @@ class Datastore {
      * @param  {Boolean}       [config.rawResponse]  Return raw response without binding to model
      */
     query(config) {
-        return validate(config, datastoreSchema.query)
-            .then(validConfig => this._query(validConfig));
+        return validate(config, datastoreSchema.query).then(validConfig => this._query(validConfig));
     }
 
     _query() {
@@ -138,8 +133,7 @@ class Datastore {
      * @param  {Object}   config.params.id  Unique id
      */
     remove(config) {
-        return validate(config, datastoreSchema.remove)
-            .then(validConfig => this._remove(validConfig));
+        return validate(config, datastoreSchema.remove).then(validConfig => this._remove(validConfig));
     }
 
     _remove() {
