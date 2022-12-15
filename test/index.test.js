@@ -4,7 +4,7 @@ const { assert } = require('chai');
 const Joi = require('joi');
 const mockery = require('mockery');
 
-describe('index test', function() {
+describe('index test', function () {
     let instance;
     let Datastore;
     let schemaMock;
