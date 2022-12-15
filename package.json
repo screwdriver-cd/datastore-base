@@ -12,7 +12,7 @@
     "url": "git+https://github.com/screwdriver-cd/datastore-base.git"
   },
   "homepage": "https://github.com/screwdriver-cd/datastore-base",
-  "bugs": "https://github.com/screwdriver-cd/datastore-base/issues",
+  "bugs": "https://github.com/screwdriver-cd/screwdriver/issues",
   "keywords": [
     "screwdriver",
     "yahoo"
