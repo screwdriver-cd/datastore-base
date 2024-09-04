@@ -1,6 +1,6 @@
 {
   "name": "screwdriver-datastore-base",
-  "version": "7.0.0",
+  "version": "6.0.0",
   "description": "Base class defining the interface for datastore implementations",
   "main": "index.js",
   "scripts": {
@@ -43,6 +43,6 @@
   },
   "dependencies": {
     "joi": "^17.7.0",
-    "screwdriver-data-schema": "^24.0.0"
+    "screwdriver-data-schema": "^23.0.4"
   }
 }
